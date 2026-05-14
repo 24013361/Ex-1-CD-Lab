@@ -1,7 +1,8 @@
 # Ex-1 IMPLEMENTATION-OF-SYMBOL-TABLE
-# Register Number :
-# Date : 
+# Register Number :212224240029
+# Date :11/05/26 
 # AIM :
+ To write a C program to implement a symbol table.
 ## To write a C program to implement a symbol table.
 # ALGORITHM
 1.	Start the program.
@@ -13,6 +14,73 @@
 7.	To reach a variable, enter the variable to be searched and the symbol table has been checked for the corresponding variable, the variable along with its address is displayed as a result.
 8.	Stop the program. 
 # PROGRAM
+```c
+#include <stdio.h>
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#include <stdlib.h>
+#define MAX_EXPRESSION_SIZE 100
+
+int main() {
+    int i = 0, j = 0, x = 0, n, flag = 0;
+    char b[MAX_EXPRESSION_SIZE], d[15], c, srch;
+
+    printf("Enter the Expression terminated by $: ");
+    while ((c = getchar()) != '$' && i < MAX_EXPRESSION_SIZE - 1) {
+        b[i++] = c;
+    }
+    b[i] = '\0'; 
+    n = i - 1;
+
+    printf("\nGiven Expression: %s\n", b);
+
+    printf("\nSymbol Table\n");
+    printf("Symbol\tType\n");
+
+    for (j = 0; j <= n; j++) {
+        c = b[j];
+        if (isalpha((unsigned char)c)) {
+            int alreadyExists = 0;
+            for (int k = 0; k < x; k++) {
+                if (d[k] == c) {
+                    alreadyExists = 1;
+                    break;
+                }
+            }
+
+            if (!alreadyExists) {
+                d[x] = c;
+                printf("%c\tidentifier\n", c);
+                x++;
+            }
+        }
+    }
+    while ((c = getchar()) != '\n' && c != EOF);
+
+    printf("\nEnter the symbol to search: ");
+    srch = getchar();
+
+    for (i = 0; i < x; i++) {
+        if (srch == d[i]) {
+            printf("Symbol Found\n");
+            flag = 1;
+            printf("Address : %lld",&d[i]);
+            break;
+        }
+    }
+    if (flag == 0)
+        printf("Symbol Not Found\n");
+
+    return 0;
+}
+```
+
 # OUTPUT
+
+
+<img width="1918" height="1137" alt="Screenshot 2026-05-11 103104" src="https://github.com/user-attachments/assets/afb47bb7-7a70-41f5-ac72-814d71012bee" />
+<img width="1917" height="1136" alt="Screenshot 2026-05-11 103213" src="https://github.com/user-attachments/assets/91dfd8bf-ea32-4cfe-b8b0-04075633a4b0" />
+
 # RESULT
 ### The program to implement a symbol table is executed and the output is verified.
